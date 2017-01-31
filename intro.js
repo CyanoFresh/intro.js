@@ -102,7 +102,7 @@
         //use querySelector function only when developer used CSS selector
         if (typeof(currentItem.element) === 'string') {
           //grab the element with given selector from the page
-          currentItem.element = document.querySelector(currentItem.element);
+          // currentItem.element = document.querySelector(currentItem.element);
         }
 
         //intro without element
@@ -353,6 +353,10 @@
     if (typeof (this._introBeforeChangeCallback) !== 'undefined') {
       this._introBeforeChangeCallback.call(this, nextStep.element);
     }
+
+      if (typeof nextStep.element == "string") {
+          nextStep.element = document.querySelector(nextStep.element);
+      }
 
     _showElement.call(this, nextStep);
   }
